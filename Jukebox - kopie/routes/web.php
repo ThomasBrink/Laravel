@@ -2,6 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\GebruikerController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -14,5 +16,7 @@ use App\Http\Controllers\HomeController;
 */
 
 Route::get('/', [HomeController::class, 'index']);
+Route::get('/gebruikers/create', [GebruikerController::class, 'createGebruiker']);
+Route::post('/gebruikers', [GebruikerController::class, 'saveGebruiker']);
+Route::get('/gebruikers', [GebruikerController::class, 'showGebruikers']);
 
-Route::get('/about', [HomeController::class, 'about']);

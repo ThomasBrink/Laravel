@@ -13,6 +13,7 @@
     <div>
         <nav><a href="/about">about</a></nav>
         <nav><a href="/contact">contact</a></nav>
+        <nav><a href="{{ route('guitars.index') }}">Guitars</a></nav>
     </div>
         <div>
             <h1>About page</h1>
