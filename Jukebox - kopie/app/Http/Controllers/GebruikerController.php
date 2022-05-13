@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Gebruiker;
+//use App\Models\gebruikers;
 
 class GebruikerController extends Controller
 {
@@ -20,13 +21,18 @@ class GebruikerController extends Controller
     }
 
     public function saveGebruiker(){
-        $gebruikers = new Gebuiker();
+        $gebruikers = new Gebruiker();
 
-        $gebruiker->naam = request('naam');
-        $gebruiker->wachtwoord = request('wachtwoord');
+        $gebruikers->naam = request('naam');
+        $gebruikers->wachtwoord = request('wachtwoord');
 
-        error_log($gebruiker);
+        $gebruikers->save();
 
         return redirect('/');
+    }
+
+    public function showSingleGebruiker(){
+        //$gebruikers = Gebruiker::all();
+        error_log($gebruikers);
     }
 }

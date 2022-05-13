@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\GebruikerController;
+use App\Http\Controllers\GenresController;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,7 +17,16 @@ use App\Http\Controllers\GebruikerController;
 */
 
 Route::get('/', [HomeController::class, 'index']);
+
+
 Route::get('/gebruikers/create', [GebruikerController::class, 'createGebruiker']);
 Route::post('/gebruikers', [GebruikerController::class, 'saveGebruiker']);
 Route::get('/gebruikers', [GebruikerController::class, 'showGebruikers']);
+Route::get('/gebruikers/{id?}', [GebruikerController::class, 'showSingleGebruiker']);
 
+
+Route::get('/genres', [GenresController::class, 'showGenres']);
+Route::get('/genres/{genre}', [GenresController::class, 'showGenreSongs']);
+Route::get('/genres/{genre}/{songId}', [GenresController::class, 'showSongsDetail']);
+
+//Route::get('')

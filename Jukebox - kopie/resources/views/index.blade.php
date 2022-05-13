@@ -12,13 +12,12 @@
     <body>
     <div>
         <nav><a href="/">Index</a></nav>
-        <nav><a href="/gebruikers">Gebruiker</a></nav>
+        <nav><a href="/gebruikers">Gebruikers</a></nav>
+        <nav><a href="/genres">Genres overzicht</a></nav>
+        <nav><a href="">Playlists</a></nav>
     </div>
         <div>
             <h1>Jukebox</h1>
-        </div>
-        <div>
-            <h2></h2>
         </div>
     </body>
 </html>
