@@ -11,6 +11,7 @@
         <div>
         	<ul>
             	<li>Playlist: {{ $songs->song }}</li>
+            	<li>{{$songs->duur}}</li>
             	<a href="/songDelete/{{ $songs->id }}/{{ $listId }}">verwijder uit playlist</a>
             </ul>
         </div>
