@@ -20,5 +20,21 @@
 		<li>Time: {{ $Song->songduur }}</li>
 	</ul>
 	@endforeach
+
+	<div>
+		<form action="/songadd" method="POST">
+			@csrf
+			<label for="name">Playlist:</label>
+			<select name="listId">
+				@foreach($Lists as $Lists)
+					<option value="{{ $Lists->id }}">{{ $Lists->listnaam}}</option>
+				@endforeach
+			</select>
+			<br>
+			<input type="hidden" name="song" value="{{ $Song->songnaam }}">
+			<input type="hidden" name="duur" value="{{ $Song->songduur }}">
+			<input type="submit" value="Voeg toe aan playlist">
+		</form>
+	</div>
 </body>
 </html>

@@ -11,7 +11,7 @@
 	@foreach($Songs as $Songs)
         <div>
         	<ul>
-            	<li><a href="/genres/{{ $Songs->songsgenre }}/{{ $Songs->id }}">Song: {{ $Songs->songnaam }}</a></li>
+            	<li><a href="/genres/{{ $Songs->songsgenre }}/{{ $Songs->id }}/{{ $userId }}">Song: {{ $Songs->songnaam }}</a></li>
             </ul>
         </div>
     @endforeach

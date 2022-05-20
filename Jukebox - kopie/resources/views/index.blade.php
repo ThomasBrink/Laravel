@@ -10,14 +10,22 @@
         <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
     </head>
     <body>
-    <div>
-        <nav><a href="/">Index</a></nav>
-        <nav><a href="/gebruikers">Gebruikers</a></nav>
-        <nav><a href="/genres">Genres overzicht</a></nav>
-        <nav><a href="">Playlists</a></nav>
-    </div>
         <div>
             <h1>Jukebox</h1>
+            <form action="/" method="POST">
+                @csrf
+                <label for="gebruikersnaam">Gebruikers naam:</label>
+                <br>
+                <input type="text" name="gebruikersnaam">
+                <br>
+                <br>   
+                <label for="wachtwoord">Wachtwoord:</label>
+                <br>
+                <input type="password" name="wachtwoord">
+                <br>
+                <br>
+                <button type="submit">Login</button>
+            </form>
         </div>
     </body>
 </html>

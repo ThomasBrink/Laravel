@@ -6,12 +6,12 @@
 	<title></title>
 </head>
 <body>
-	<nav><a href="/">Index</a></nav>
-	<h1>Genres</h1>
-	@foreach($Genres as $Genres)
+	<h1>PlaylistDetail</h1>
+	@foreach($songs as $songs)
         <div>
         	<ul>
-            	<li><a href="/genres/{{ $Genres->genres }}/{{$userId}}">Genre: {{ $Genres->genres }}</a></li>
+            	<li>Playlist: {{ $songs->song }}</li>
+            	<a href="/songDelete/{{ $songs->id }}/{{ $listId }}">verwijder uit playlist</a>
             </ul>
         </div>
     @endforeach

@@ -35,4 +35,15 @@ class GebruikerController extends Controller
         //$gebruikers = Gebruiker::all();
         error_log($gebruikers);
     }
+
+    public function gebruikerlogin(){
+        $gebruikersnaam = request('gebruikersnaam');
+        $wachtwoord = request('wachtwoord');
+
+        $gebruiker = Gebruiker::where('naam', $gebruikersnaam)->where('wachtwoord', $wachtwoord)->get();
+
+        return view('logincheck', [
+            'gebruiker' => $gebruiker
+        ]);
+    }
 }
