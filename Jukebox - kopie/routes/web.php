@@ -25,7 +25,6 @@ Route::get('/gebruikers/create', [GebruikerController::class, 'createGebruiker']
 Route::post('/gebruikers', [GebruikerController::class, 'saveGebruiker']);
 Route::get('/gebruikers', [GebruikerController::class, 'showGebruikers']);
 
-
 Route::get('/genres/{userId}', [GenresController::class, 'showGenres']);
 Route::get('/genres/{userId}/{genre}', [GenresController::class, 'showGenreSongs']);
 Route::get('/genres/{userId}/{genre}/{songId}', [GenresController::class, 'showSongsDetail']);
@@ -38,3 +37,9 @@ Route::post('/songadd', [PlaylistController::class, 'addSong']);
 Route::post('/addplaylist', [PlaylistController::class, 'addplaylist']);
 Route::get('/songDelete/{id}/{listId}', [PlaylistController::class, 'songDelete']);
 Route::get('/playlist/{listId}', [PlaylistController::class, 'showPlaylistDetail']);
+
+Route::get('/SessionPlaylist/{userId}', [PlaylistController::class, 'showSessionPlaylist']);
+Route::post('/sessionSongAdd/{userId}', [PlaylistController::class, 'addSessionSong']);
+Route::post('/addSessionPlaylist', [PlaylistController::class, 'addSessionPlaylist']);
+
+Route::get('/forget', [PlaylistController::class, 'forgetSession']);

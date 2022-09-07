@@ -10,11 +10,13 @@
 	@foreach($songs as $songs)
         <div>
         	<ul>
-            	<li>Playlist: {{ $songs->song }}</li>
-            	<li>{{$songs->duur}}</li>
+            	<li>Song: {{ $songs->song }}</li>
+            	<li>Duur: {{ $songs->duur }}</li>
             	<a href="/songDelete/{{ $songs->id }}/{{ $listId }}">verwijder uit playlist</a>
             </ul>
         </div>
     @endforeach
+
+    <p>Totale duur:</p>
 </body>
 </html>

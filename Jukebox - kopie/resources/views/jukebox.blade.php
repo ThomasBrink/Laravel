@@ -12,12 +12,12 @@
     <body>
     <div>
         <nav><a href="/">Index</a></nav>
+        <nav><a href="/SessionPlaylist/{{ $userId }}">Session playlist</a></nav>
         <nav><a href="/gebruikers">Gebruikers</a></nav>
         <nav><a href="/genres/{{$userId}}">Genres overzicht</a></nav>
     </div>
         <div>
             <h1>Jukebox</h1>
-
             @foreach($Lists as $Lists)
             <div>
                 <ul>

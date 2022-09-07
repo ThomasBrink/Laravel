@@ -31,7 +31,6 @@ class GenresController extends Controller
     }
 
     public function showSongsDetail($Genre, $SongId, $userId){
-        error_log($userId);
         $song = Songs::where('id', $SongId)->get();
         $lists = Lists::where('userId', $userId)->get();
 

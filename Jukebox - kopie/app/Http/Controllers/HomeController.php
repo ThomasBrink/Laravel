@@ -5,10 +5,18 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Gebruiker;
 use App\Models\Lists;
+use Illuminate\Support\Facades\Session;
 
 class HomeController extends Controller
 {
     public function index(){
+        
+        Session::put('SessionPlaylist', []);
+
+        $SessionPlaylist = Session::all('SessionPlaylist');
+
+        print_r($SessionPlaylist);
+        
         return view('index');
     }
 

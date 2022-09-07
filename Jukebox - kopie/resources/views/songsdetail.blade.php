@@ -35,6 +35,14 @@
 			<input type="hidden" name="duur" value="{{ $Song->songduur }}">
 			<input type="submit" value="Voeg toe aan playlist">
 		</form>
+		<br>
+		<form action="/sessionSongAdd" method="POST">
+			@csrf
+			<label for="name">Playlist:</label>
+			<input name="songs" value="{{ $Song->songnaam }}">
+			<br>
+			<input type="submit" value="Sla op in Session">
+		</form>
 	</div>
 </body>
 </html>
