@@ -38,8 +38,7 @@
 		<br>
 		<form action="/sessionSongAdd" method="POST">
 			@csrf
-			<label for="name">Playlist:</label>
-			<input name="songs" value="{{ $Song->songnaam }}">
+			<input type="hidden" name="songs" value="{{ $Song->songnaam }}">
 			<br>
 			<input type="submit" value="Sla op in Session">
 		</form>

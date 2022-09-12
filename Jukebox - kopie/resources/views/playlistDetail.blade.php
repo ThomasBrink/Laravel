@@ -17,6 +17,6 @@
         </div>
     @endforeach
 
-    <p>Totale duur:</p>
+    <p>Totale duur : {{$totalTime[0]}} uur {{$totalTime[1]}} min {{$totalTime[2]}} sec</p>
 </body>
 </html>

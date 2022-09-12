@@ -18,7 +18,7 @@ class CreateSongsTable extends Migration
             $table->string('songnaam');
             $table->string('songsgenre');
             $table->string('songcreator');
-            $table->string('songduur');
+            $table->time('songduur');
             $table->timestamps();
         });
     }

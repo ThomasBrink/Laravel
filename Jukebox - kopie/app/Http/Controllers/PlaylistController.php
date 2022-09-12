@@ -21,19 +21,23 @@ class PlaylistController extends Controller
 
     public function showPlaylistDetail($listId){
         $songs = playlists::where('listId', $listId)->get();
-        /*
-        error_log($songs[0]->duur);
 
-        $totaleDuur = $songs[0]->duur . $songs[1]->songduur; 
+        $totaleDuur;
+        $num = 0;
+        $totalTime = [0,0,0];
 
-        error_log($songs[0]->duur);
-        error_log($totaleDuur);
-        */
-        //totale duur
+        for($i = 0; $i<count($songs); $i++){
+            $num = explode(':', $songs[$i]->duur);
 
+            for($a = 0; $a<count($totalTime); $a++){
+                $totalTime[$a] = $totalTime[$a] + $num[$a];
+            }
+        }
+        
         return view('playlistDetail', [
             'songs' => $songs,
-            'listId' => $listId
+            'listId' => $listId,
+            'totalTime' => $totalTime
         ]);
     }
 
