@@ -20,7 +20,10 @@ class PlaylistController extends Controller
     }
 
     public function showPlaylistDetail($listId){
+        $lists = Lists::where('id', $listId)->get();
         $songs = playlists::where('listId', $listId)->get();
+
+        //dd($lists);
 
         $totaleDuur;
         $num = 0;
@@ -37,7 +40,8 @@ class PlaylistController extends Controller
         return view('playlistDetail', [
             'songs' => $songs,
             'listId' => $listId,
-            'totalTime' => $totalTime
+            'totalTime' => $totalTime,
+            'lists' => $lists
         ]);
     }
 
@@ -184,4 +188,16 @@ class PlaylistController extends Controller
         ]);
 
     }
+
+    public function updatePlaylist(){
+        $listId = Request('listId');
+
+        $playlistnaam = Request('playlistnaam');
+
+        lists::where('id', $listId)->update(['listnaam' => $playlistnaam]);
+
+        return redirect('/playlist/' . $listId);
+    }
+
 }
+    

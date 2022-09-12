@@ -37,6 +37,7 @@ Route::post('/songadd', [PlaylistController::class, 'addSong']);
 Route::post('/addplaylist', [PlaylistController::class, 'addplaylist']);
 Route::get('/songDelete/{id}/{listId}', [PlaylistController::class, 'songDelete']);
 Route::get('/playlist/{listId}', [PlaylistController::class, 'showPlaylistDetail']);
+Route::post('/updatePlaylist', [PlaylistController::class, 'updatePlaylist']);
 
 Route::get('/SessionPlaylist/{userId}', [PlaylistController::class, 'showSessionPlaylist']);
 Route::post('/sessionSongAdd/{userId}', [PlaylistController::class, 'addSessionSong']);

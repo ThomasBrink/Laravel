@@ -7,6 +7,19 @@
 </head>
 <body>
 	<h1>PlaylistDetail</h1>
+	<h2>{{$lists[0]['listnaam']}}</h2>
+
+	<div>
+		<form action="/updatePlaylist" method="POST">
+			@csrf
+			<label for="naam">Pas playlist naam aan:</label>
+			<input type="text" name="playlistnaam" value="{{$lists[0]['listnaam']}}">
+			<input type="submit" value="pas naam aan">
+			<input type="hidden" name="listId" value="{{ $listId }}">
+		</form>
+	</div>
+
+	<h2>Songs in playlist:</h2>
 	@foreach($songs as $songs)
         <div>
         	<ul>
