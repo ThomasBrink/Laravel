@@ -106,10 +106,8 @@ class PlaylistController extends Controller
         ]);
     }
 
-    public function addSessionSong($userId){
-        $newSong = Request('songs');
-
-        Session::push('SessionPlaylist', $newSong);
+    public function addSessionSong(Request $request, $userId){
+        Session::push('SessionPlaylist', $request->get('songs'));
 
         $SessionPlaylist = Session::all('SessionPlaylist');
 

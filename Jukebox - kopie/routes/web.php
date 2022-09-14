@@ -43,6 +43,6 @@ Route::get('/SessionPlaylist/{userId}', [SessionController::class, 'showSessionP
 
 Route::post('/sessionSongAdd/{userId}', [SessionController::class, 'addSessionSong']);
 
-Route::post('/addSessionPlaylist', [SessionController::class, 'addSessionPlaylist']);
+Route::post('/addSessionPlaylist/{userId}', [SessionController::class, 'addSessionPlaylist']);
 
-Route::get('/forget', [SessionController::class, 'forgetSession']);
+Route::get('/forget/{userId}', [SessionController::class, 'forgetSession']);

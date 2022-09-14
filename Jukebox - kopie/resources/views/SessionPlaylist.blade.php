@@ -17,7 +17,7 @@
 		@for ($i = 0; $i < $num; $i++)
     		<p>Song: {{ session('SessionPlaylist')[$i] }}</p>
 		@endfor
-		<form action="/addSessionPlaylist" method="POST">
+		<form action="/addSessionPlaylist/{{$userId}}" method="POST">
 			@csrf
 
 			<br>

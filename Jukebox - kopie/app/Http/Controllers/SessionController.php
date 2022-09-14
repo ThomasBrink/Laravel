@@ -35,7 +35,7 @@ class SessionController extends Controller
         return redirect('/SessionPlaylist/'. $userId);
     }
 
-    public function addSessionPlaylist(){
+    public function addSessionPlaylist($userId){
         $songNaam = Session::get('SessionPlaylist'); 
 
         $songNaamCount = count($songNaam);
@@ -64,10 +64,12 @@ class SessionController extends Controller
             $playlists->save();
         }
 
-        return redirect('/forget');
+        return redirect('/forget/' .$userId);
     }
 
-    public function forgetSession(){
+    public function forgetSession($userId){
         Session::forget('SessionPlaylist');
+
+        return redirect('/jukebox/' .$userId);
     }
 }
