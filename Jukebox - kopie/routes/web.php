@@ -5,7 +5,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\GebruikerController;
 use App\Http\Controllers\GenresController;
 use App\Http\Controllers\PlaylistController;
-
+use App\Http\Controllers\SessionController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -39,8 +39,10 @@ Route::get('/songDelete/{id}/{listId}', [PlaylistController::class, 'songDelete'
 Route::get('/playlist/{listId}', [PlaylistController::class, 'showPlaylistDetail']);
 Route::post('/updatePlaylist', [PlaylistController::class, 'updatePlaylist']);
 
-Route::get('/SessionPlaylist/{userId}', [PlaylistController::class, 'showSessionPlaylist']);
-Route::post('/sessionSongAdd/{userId}', [PlaylistController::class, 'addSessionSong']);
-Route::post('/addSessionPlaylist', [PlaylistController::class, 'addSessionPlaylist']);
+Route::get('/SessionPlaylist/{userId}', [SessionController::class, 'showSessionPlaylist']);
 
-Route::get('/forget', [PlaylistController::class, 'forgetSession']);
+Route::post('/sessionSongAdd/{userId}', [SessionController::class, 'addSessionSong']);
+
+Route::post('/addSessionPlaylist', [SessionController::class, 'addSessionPlaylist']);
+
+Route::get('/forget', [SessionController::class, 'forgetSession']);

@@ -14,8 +14,6 @@ class HomeController extends Controller
         Session::put('SessionPlaylist', []);
 
         $SessionPlaylist = Session::all('SessionPlaylist');
-
-        print_r($SessionPlaylist);
         
         return view('index');
     }

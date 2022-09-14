@@ -31,11 +31,6 @@ class GebruikerController extends Controller
         return redirect('/');
     }
 
-    public function showSingleGebruiker(){
-        //$gebruikers = Gebruiker::all();
-        error_log($gebruikers);
-    }
-
     public function gebruikerlogin(){
         $gebruikersnaam = request('gebruikersnaam');
         $wachtwoord = request('wachtwoord');

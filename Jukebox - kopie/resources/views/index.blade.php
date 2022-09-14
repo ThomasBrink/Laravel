@@ -10,8 +10,8 @@
         <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
     </head>
     <body>
-        {{ Session::get('SessionPlaylist[0]') }}
         <div>
+            <nav><a href="/gebruikers/create">Maak gebruiker</a></nav>
             <h1>Jukebox</h1>
             <form action="/" method="POST">
                 @csrf

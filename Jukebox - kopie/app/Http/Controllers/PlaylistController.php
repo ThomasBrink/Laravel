@@ -23,8 +23,6 @@ class PlaylistController extends Controller
         $lists = Lists::where('id', $listId)->get();
         $songs = playlists::where('listId', $listId)->get();
 
-        //dd($lists);
-
         $totaleDuur;
         $num = 0;
         $totalTime = [0,0,0];
@@ -95,13 +93,6 @@ class PlaylistController extends Controller
     }
 
     public function showSessionPlaylist($userId){
-        //Session::push('SessionPlaylist', 'jez');
-        /*
-        dd(
-            Session::all('SessionPlaylist') 
-        );
-        */
-        //$genres = Genres::all();
         $songs = Songs::all();
 
         $SessionPlaylist = Session::get('SessionPlaylist');
@@ -123,13 +114,6 @@ class PlaylistController extends Controller
         $SessionPlaylist = Session::all('SessionPlaylist');
 
         return redirect('/SessionPlaylist/'. $userId);
-
-        //return redirect("/SessionPlaylist");
-
-        /*
-        dd(
-            Session::all('SessionPlaylist') 
-        );*/
     }
 
     public function addSessionPlaylist(){
@@ -166,27 +150,6 @@ class PlaylistController extends Controller
 
     public function forgetSession(){
         Session::forget('SessionPlaylist');
-    }
-
-    public function showSaveSession($userId){
-        $SessionPlaylist = Session::get('SessionPlaylist');
-
-        $lists = new Lists();
-
-        $lists->listnaam = 'SessionPlaylist';
-        $lists->listduur = 'lekker lang';
-        $lists->userId = Request('userId');
-
-        $SessionList = $lists;
-
-        //$lists->save();
-
-        return view('saveSessionPlaylist', [
-            'SessionPlaylist' => $SessionPlaylist,
-            'lists' => $SessionList,
-            'userId' => $userId
-        ]);
-
     }
 
     public function updatePlaylist(){

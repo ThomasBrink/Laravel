@@ -7,7 +7,6 @@
 </head>
 <body>
 	<nav><a href="/">Index</a></nav>
-
 	<h1>Song detail</h1>
 	@foreach($Song as $Song)
 	<ul>
@@ -36,7 +35,7 @@
 			<input type="submit" value="Voeg toe aan playlist">
 		</form>
 		<br>
-		<form action="/sessionSongAdd" method="POST">
+		<form action="/sessionSongAdd/{{$userId}}" method="POST">
 			@csrf
 			<input type="hidden" name="songs" value="{{ $Song->songnaam }}">
 			<br>

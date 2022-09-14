@@ -17,19 +17,6 @@
 		@for ($i = 0; $i < $num; $i++)
     		<p>Song: {{ session('SessionPlaylist')[$i] }}</p>
 		@endfor
-		<form action="/sessionSongAdd/{{$userId}}" method="POST">
-			@csrf
-			<label for="name">Playlist:</label>
-			<select name="songs">
-				@foreach($Songs as $Songs)
-					<option value="{{ $Songs->songnaam }}">{{ $Songs->songnaam }}</option>
-				@endforeach
-			</select>
-			<br>
-			<input type="hidden" name="userId" value="{{ $userId }}">
-			<input type="submit" value="Voeg toe aan playlist">
-		</form>
-
 		<form action="/addSessionPlaylist" method="POST">
 			@csrf
 

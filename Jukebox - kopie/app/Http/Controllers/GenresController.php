@@ -36,7 +36,8 @@ class GenresController extends Controller
 
         return view('songsdetail', [
             'Song' => $song,
-            'Lists' => $lists
+            'Lists' => $lists,
+            'userId' => $userId
         ]);
     }
 }
