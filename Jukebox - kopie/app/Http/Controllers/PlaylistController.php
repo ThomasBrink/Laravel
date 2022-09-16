@@ -33,6 +33,10 @@ class PlaylistController extends Controller
             for($a = 0; $a<count($totalTime); $a++){
                 $totalTime[$a] = $totalTime[$a] + $num[$a];
             }
+            if($totalTime[2] > 60){
+                $totalTime[2] = $totalTime[2] - 60;
+                $totalTime[1] = $totalTime[1] + 1;
+            }
         }
         
         return view('playlistDetail', [

@@ -17,9 +17,10 @@
 		@for ($i = 0; $i < $num; $i++)
     		<p>Song: {{ session('SessionPlaylist')[$i] }}</p>
 		@endfor
+
+		<p>Totale duur : {{$totalTime[0]}} uur {{$totalTime[1]}} min {{$totalTime[2]}} sec</p>
 		<form action="/addSessionPlaylist/{{$userId}}" method="POST">
 			@csrf
-
 			<br>
 			<input type="hidden" name="playlistnaam" value="SessionPlaylist">
 			<input type="hidden" name="userId" value="{{ $userId }}">

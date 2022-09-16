@@ -31,11 +31,8 @@ class GebruikerController extends Controller
         return redirect('/');
     }
 
-    public function gebruikerlogin(){
-        $gebruikersnaam = request('gebruikersnaam');
-        $wachtwoord = request('wachtwoord');
-
-        $gebruiker = Gebruiker::where('naam', $gebruikersnaam)->where('wachtwoord', $wachtwoord)->get();
+    public function gebruikerlogin(Request $request){
+        $gebruiker = Gebruiker::where('naam', $request->get('gebruikersnaam'))->where('wachtwoord', $request->get('wachtwoord'))->get();
 
         return view('logincheck', [
             'gebruiker' => $gebruiker

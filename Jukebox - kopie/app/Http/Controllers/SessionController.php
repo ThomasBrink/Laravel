@@ -12,16 +12,44 @@ use Illuminate\Support\Facades\Session;
 class SessionController extends Controller
 {
     public function showSessionPlaylist($userId){
-        $songs = Songs::all();
-
         $SessionPlaylist = Session::get('SessionPlaylist');
+
+        $songSave = [];
+        $totaleDuur;
+        $num = 0;
+        $totalTime = [0,0,0];
+        $count = 0;
+
+        if($SessionPlaylist != NULL){
+            $count = count($SessionPlaylist);
+        }
+
+        for($i = 0; $i<$count; $i++){
+            $songs = Songs::where('songNaam', $SessionPlaylist[$i])->get('songDuur');
+
+
+            $songSave[$i] = $songs[0]->songDuur;
+        }
+
+        for($i = 0; $i<$count; $i++){
+            $num = explode(':', $songSave[$i]);
+
+            for($a = 0; $a<count($totalTime); $a++){
+                $totalTime[$a] = $totalTime[$a] + $num[$a];
+            }
+            if($totalTime[2] > 60){
+                $totalTime[2] = $totalTime[2] - 60;
+                $totalTime[1] = $totalTime[1] + 1;
+            }
+        }
 
         dump($SessionPlaylist);
 
         return view('SessionPlaylist', [
-            'Songs' => $songs,
+            //'Songs' => $songs,
             'userId' => $userId,
-            'SessionPlaylist' => $SessionPlaylist
+            'SessionPlaylist' => $SessionPlaylist,
+            'totalTime' => $totalTime
         ]);
     }
 
