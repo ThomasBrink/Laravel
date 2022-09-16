@@ -11,7 +11,7 @@ use Illuminate\Support\Facades\Session;
 
 class PlaylistController extends Controller
 {
-    public function showPlaylists(){
+    public function showPlaylists(){// haalt alle playlist uit de database en returnt ze naar de view
         $lists = Lists::all();
 
         return view('playlists', [
@@ -19,7 +19,7 @@ class PlaylistController extends Controller
         ]);
     }
 
-    public function showPlaylistDetail($listId){
+    public function showPlaylistDetail($listId){// haalt playlist uit de database van de juiste gebruiker en haalt bijbehoorende songs op en return ze naar de view
         $lists = Lists::where('id', $listId)->get();
         $songs = playlists::where('listId', $listId)->get();
 
@@ -47,7 +47,7 @@ class PlaylistController extends Controller
         ]);
     }
 
-    public function addSong(){
+    public function addSong(){//reqeust infomatie uit de form en maakt een nieuwe playlist aan met de infomatie die de gebruiker wilt
         $playlists = new Playlists();
 
         $playlists->listId = Request("listId");
@@ -60,7 +60,7 @@ class PlaylistController extends Controller
         return redirect('/');
     }
 
-    public function addplaylist(){
+    public function addplaylist(){//voegt een song toe aan de playlist die de gebruiker wilt updaten met de songs die de gebruiker invult
         $lists = new Lists();
 
         $lists->listnaam = Request('playlistnaam');
@@ -74,14 +74,14 @@ class PlaylistController extends Controller
         return redirect('/');
     }
 
-    public function deleteList($id){
+    public function deleteList($id){//verwijdert playlist uit de database die de gebruiker niet meer wilt en haalt de bijbehoorende songs uit de database
         playlists::where('listId', $id)->delete();
         Lists::where('id', $id)->delete();
 
         return redirect('/');
     }
 
-    public function songDelete($id, $listId){
+    public function songDelete($id, $listId){// verwijdert een song uit een playlist van de gebruiker
         $song = playlists::where('id', $id)->where('listId', $listId);
 
         $song->delete();
@@ -89,72 +89,15 @@ class PlaylistController extends Controller
         return redirect('/');
     }
 
-    public function createPlaylist($userId){
+    public function createPlaylist($userId){ //maakt een playlist aan voor de bebruiker
 
         return view('createPlaylist', [
             'userId' => $userId
         ]);
     }
 
-    public function showSessionPlaylist($userId){
-        $songs = Songs::all();
 
-        $SessionPlaylist = Session::get('SessionPlaylist');
-
-        dump($SessionPlaylist);
-
-        return view('SessionPlaylist', [
-            'Songs' => $songs,
-            'userId' => $userId,
-            'SessionPlaylist' => $SessionPlaylist
-        ]);
-    }
-
-    public function addSessionSong(Request $request, $userId){
-        Session::push('SessionPlaylist', $request->get('songs'));
-
-        $SessionPlaylist = Session::all('SessionPlaylist');
-
-        return redirect('/SessionPlaylist/'. $userId);
-    }
-
-    public function addSessionPlaylist(){
-        $songNaam = Session::get('SessionPlaylist'); 
-
-        $songNaamCount = count($songNaam);
-
-        $lists = new Lists();
-
-        $lists->listnaam = Request('playlistnaam');
-        $lists->listduur = 'lekker lang';
-        $lists->userId = Request('userId');
-
-        $SessionList = $lists;
-
-        $lists->save();
-
-        
-
-        for($i = 0; $i < $songNaamCount; $i++){
-            $Songduur = Songs::where('songNaam', $songNaam[$i])->get();
-
-            $playlists = new Playlists();
-
-            $playlists->listId = $SessionList->id;
-            $playlists->song = $songNaam[$i];
-            $playlists->duur = $Songduur[0]->songduur;
-
-            $playlists->save();
-        }
-
-        return redirect('/forget');
-    }
-
-    public function forgetSession(){
-        Session::forget('SessionPlaylist');
-    }
-
-    public function updatePlaylist(){
+    public function updatePlaylist(){//update de naam van een bestaande playlist met de naam die de gebruiker invoerd
         $listId = Request('listId');
 
         $playlistnaam = Request('playlistnaam');

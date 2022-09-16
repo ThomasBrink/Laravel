@@ -46,7 +46,7 @@ class SessionController extends Controller
         dump($SessionPlaylist);
 
         return view('SessionPlaylist', [
-            //'Songs' => $songs,
+            //'Songs' => $song,
             'userId' => $userId,
             'SessionPlaylist' => $SessionPlaylist,
             'totalTime' => $totalTime
